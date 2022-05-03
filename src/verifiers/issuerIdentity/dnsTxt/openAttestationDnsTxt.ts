@@ -1,5 +1,5 @@
 import { getData, utils, v2, v3 } from "@govtechsg/open-attestation";
-import { getDocumentStoreRecords } from "@govtechsg/dnsprove";
+import { getDocumentStoreRecords } from "@preetanandvakt/dnsprove";
 import { VerificationFragmentType, Verifier, VerifierOptions } from "../../../types/core";
 import { OpenAttestationDnsTxtCode } from "../../../types/error";
 import { withCodedErrorHandler } from "../../../common/errorHandler";
@@ -30,7 +30,7 @@ const resolveIssuerIdentity = async (
   const network = await options.provider.getNetwork();
   const records = await getDocumentStoreRecords(location);
   const matchingRecord = records.find(
-    (record) =>
+    (record: any) =>
       record.addr.toLowerCase() === smartContractAddress.toLowerCase() &&
       record.netId === network.chainId.toString(10) &&
       record.type === "openatts" &&
